@@ -1,6 +1,5 @@
 import {
   Entity,
-  Column,
   PrimaryColumn,
   ManyToOne,
   ManyToMany,
@@ -14,15 +13,15 @@ import {Lecture} from '../lecture/lecture_entity';
 @Entity()
 export class Course {
   @PrimaryColumn()
-  CourseId: string;
+  course_id!: string;
 
-  @Column({unique: true})
-  CourseName: string;
+  @PrimaryColumn()
+  course_name!: string;
   @ManyToOne((type) => Lecturer, (lecturer) => lecturer.courses)
-  lecturer: Lecturer;
+  lecturer!: Lecturer;
   @ManyToMany((type) => Student)
   @JoinTable()
-  students: Student[];
+  students!: Student[];
   @OneToMany((type) => Lecture, (lecture) => lecture.course)
-  lectures: Lecture[];
+  lectures!: Lecture[];
 }

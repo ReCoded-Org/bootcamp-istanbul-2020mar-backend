@@ -8,18 +8,19 @@ import {
 } from 'typeorm';
 import {Course} from '../course/course_entity';
 import {Student} from '../student/student_entity';
+
 @Entity()
 export class Lecture {
   @PrimaryColumn()
-  lectureName: string;
+  lecture_name!: string;
 
   @Column({nullable: false})
-  lectureDay: string;
+  lecture_day!: string;
   @Column({nullable: false})
-  lectureHour: string;
+  lecture_hour!: string;
   @ManyToOne((type) => Course, (course) => course.lectures)
-  course: Course;
+  course!: Course;
   @ManyToMany((type) => Student)
   @JoinTable()
-  students: Student[];
+  students!: Student[];
 }

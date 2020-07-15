@@ -7,11 +7,13 @@ import * as Joi from 'joi';
 import * as Validator from 'express-joi-validation';
 
 const validator = Validator.createValidator({});
+
 const bodySchema = Joi.object({
   lectureName: Joi.string().required(),
   lectureDay: Joi.string().required(),
   lectureHour: Joi.string().required(),
 });
+
 const LectureController = Router();
 
 LectureController.post(
@@ -23,15 +25,15 @@ LectureController.post(
       const CourseRepo = getManager().getRepository(Course);
       const course = await CourseRepo.findOne({
         where: {
-          CourseId: req.params.courseid,
+          course_id: req.params.courseid,
         },
       });
       if (course === undefined) {
-        throw 'The course does not exists';
+        throw new Error('The course does not exists');
       }
-      lecture.lectureName = req.body.lectureName;
-      lecture.lectureDay = req.body.lectureDay;
-      lecture.lectureHour = req.body.lectureHour;
+      lecture.lecture_name = req.body.lectureName;
+      lecture.lecture_day = req.body.lectureDay;
+      lecture.lecture_hour = req.body.lectureHour;
       lecture.course = course;
       const repo = getManager().getRepository(Lecture);
       await repo.save(lecture);
@@ -41,4 +43,5 @@ LectureController.post(
     }
   }
 );
+
 export {LectureController};

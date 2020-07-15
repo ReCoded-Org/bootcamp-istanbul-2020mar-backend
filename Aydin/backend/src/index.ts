@@ -1,6 +1,5 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
-import {UserController} from './user/user_controller';
 import {getConnection} from './connection';
 import {LecturerController} from './lecturer/lecturer_controller';
 import {CourseController} from './course/course_controller';
@@ -12,7 +11,6 @@ async function appInit() {
   await getConnection();
   app.use(bodyParser.json());
 
-  app.use('/user', UserController);
   app.use('/lecturer', LecturerController);
   app.use('/course', CourseController);
   app.use('/student', StudentController);
@@ -28,4 +26,5 @@ async function appInit() {
     } else throw err;
   });
 }
+
 appInit().catch((err) => console.log(err));
