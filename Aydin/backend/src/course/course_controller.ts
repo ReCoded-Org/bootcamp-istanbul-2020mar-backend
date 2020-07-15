@@ -2,7 +2,9 @@ import {Router} from 'express';
 import {getManager} from 'typeorm';
 import {Course} from './course_entity';
 import {Lecturer} from '../lecturer/lecturer_entity';
+
 const CourseController = Router();
+
 CourseController.post('/:id', async (req, res) => {
   try {
     const course = new Course();
@@ -11,13 +13,15 @@ CourseController.post('/:id', async (req, res) => {
       where: {
         id: req.params.id,
       },
+      relations: ['courses'],
     });
     if (lecturer === undefined) {
-      throw 'Lecturer does not exists';
+      throw new Error('Lecturer does not exists');
     }
-    course.CourseName = req.body.CourseName;
-    course.CourseId = req.body.CourseId;
+    course.course_name = req.body.CourseName;
+    course.course_id = req.body.CourseId;
     course.lecturer = lecturer;
+    lecturer.courses.push(course);
     const repo = getManager().getRepository(Course);
     await repo.save(course);
     res.sendStatus(201);
@@ -25,4 +29,5 @@ CourseController.post('/:id', async (req, res) => {
     res.send(error);
   }
 });
+
 export {CourseController};
