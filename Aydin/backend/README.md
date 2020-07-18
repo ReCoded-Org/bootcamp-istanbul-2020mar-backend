@@ -2,11 +2,11 @@
 
 ## Description
 
-1- There going to be lectures, a lecturer has name, surname, email
+1- There are going to be lectures, a lecturer has name, surname, email
 
-2- There going to courses, a course is taught be ONE lecturer, a course has a schedule , a course's schedule is composed of lectures.
+2- There are going to be courses, a course is taught be ONE lecturer, a course has a schedule , a course's schedule is composed of lectures.
 
-3- There going to students, a student has a name, surname, email, studentId.
+3- There are going to be students, a student has a name, surname, email, studentId.
 
 4- A student is enrolled in a course, and therefor a student attends the course's lecture
 

@@ -83,7 +83,7 @@ LecturerController.get('/lecture', async (req, res) => {
 
     const listOfStudents = lecture.students.map((student) => {
       const studentObject = {
-        fistName: student.first_name,
+        firstName: student.first_name,
         lastName: student.last_name,
         SID: student.student_id,
         email: student.email,

@@ -16,7 +16,7 @@ CourseController.post('/:id', async (req, res) => {
       relations: ['courses'],
     });
     if (lecturer === undefined) {
-      throw new Error('Lecturer does not exists');
+      throw new Error('Lecturer does not exist');
     }
     course.course_name = req.body.CourseName;
     course.course_id = req.body.CourseId;
