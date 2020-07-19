@@ -1,0 +1,9 @@
+
+_develop:
+	@ $(COMPOSE) up -d
+	@ $(COMPOSE) exec $(CONTAINER_NAME) /bin/bash ||true
+	@ $(COMPOSE) stop
+	@ $(COMPOSE) down
+
+_build :
+	@ $(COMPOSE) build
