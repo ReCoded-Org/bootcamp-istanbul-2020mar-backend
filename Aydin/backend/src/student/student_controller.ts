@@ -89,7 +89,7 @@ StudentController.post('/:courseid/:lecturename', async (req, res) => {
       .getOne();
     console.log(lecture);
     if (lecture === undefined) {
-      throw new Error('This lecture does not exists');
+      throw new Error('This lecture does not exist');
     }
     if (
       student !== undefined &&

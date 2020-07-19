@@ -46,7 +46,7 @@ LecturerController.put('/course', async (req, res) => {
       relations: ['students'],
     });
     if (course === undefined) {
-      throw new Error('Course does not exists');
+      throw new Error('Course does not exist');
     }
     const student = await studentRepo.findOne({
       where: {

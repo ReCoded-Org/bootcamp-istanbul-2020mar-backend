@@ -29,7 +29,7 @@ LectureController.post(
         },
       });
       if (course === undefined) {
-        throw new Error('The course does not exists');
+        throw new Error('The course does not exist');
       }
       lecture.lecture_name = req.body.lectureName;
       lecture.lecture_day = req.body.lectureDay;
