@@ -1,4 +1,4 @@
-CONTAINER_NAME:=backend
+CONTAINER_NAME:=frontend
 COMPOSE:=docker-compose -f ./docker-compose.yml
 develop:
 	@ $(COMPOSE) up -d
