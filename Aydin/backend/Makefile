@@ -1,10 +1,10 @@
 CONTAINER_NAME:=backend
 COMPOSE:=docker-compose -f ./docker-compose.yml
-WORK_DIR=$(CURDIR)
-ROOT_DIR:=$(WORK_DIR)/..
+develop:
+	@ $(COMPOSE) up -d
+	@ $(COMPOSE) exec $(CONTAINER_NAME) /bin/bash ||true
+	@ $(COMPOSE) stop
+	@ $(COMPOSE) down
 
--include $(ROOT_DIR)/Makefile.default
-
-develop: _develop
-
-build : _build
+build :
+	@ $(COMPOSE) build 
